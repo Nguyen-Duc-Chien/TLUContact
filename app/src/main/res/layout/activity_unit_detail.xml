@@ -24,7 +24,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp" />
 
-    <!-- Horizontal LinearLayout for the buttons -->
+    <!-- Horizontal LinearLayout for the functional buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,6 +52,29 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Địa chỉ" />
+    </LinearLayout>
+
+    <!-- Horizontal LinearLayout for the edit and delete buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sửa" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Xóa" />
     </LinearLayout>
 
     <!-- Details -->

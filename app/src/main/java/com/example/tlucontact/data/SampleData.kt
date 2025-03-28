@@ -1,13 +1,37 @@
 package com.example.tlucontact.data
 
 object SampleData {
-    val units = listOf(
-        OrgUnit("Phòng Đào tạo", "123456789", "Tầng 1, Nhà A1"),
-        OrgUnit("Phòng Công tác sinh viên", "987654321", "Tầng 2, Nhà A1")
+    private val _units = mutableListOf(
+        OrgUnit(1, "Phòng Đào tạo", "123456789", "Tầng 1, Nhà A1"),
+        OrgUnit(2, "Phòng Công tác sinh viên", "987654321", "Tầng 2, Nhà A1")
     )
+    val units: List<OrgUnit> get() = _units
 
-    val staff = listOf(
-        Staff("Nguyễn Văn A", "Giảng viên", "0123456789", "a@tlu.edu.vn", "Khoa CNTT"),
-        Staff("Trần Thị B", "Nhân viên", "0987654321", "b@tlu.edu.vn", "Phòng HCTH")
+    private val _staff = mutableListOf(
+        Staff(1, "Nguyễn Văn A", "Giảng viên", "0123456789", "a@tlu.edu.vn", "Khoa CNTT"),
+        Staff(2, "Trần Thị B", "Nhân viên", "0987654321", "b@tlu.edu.vn", "Phòng HCTH")
     )
+    val staff: List<Staff> get() = _staff
+
+    fun updateUnit(updatedUnit: OrgUnit) {
+        val index = _units.indexOfFirst { it.id == updatedUnit.id }
+        if (index != -1) {
+            _units[index] = updatedUnit
+        }
+    }
+
+    fun removeUnit(unitId: Int) {
+        _units.removeAll { it.id == unitId }
+    }
+
+    fun updateStaff(updatedStaff: Staff) {
+        val index = _staff.indexOfFirst { it.id == updatedStaff.id }
+        if (index != -1) {
+            _staff[index] = updatedStaff
+        }
+    }
+
+    fun removeStaff(staffId: Int) {
+        _staff.removeAll { it.id == staffId }
+    }
 }

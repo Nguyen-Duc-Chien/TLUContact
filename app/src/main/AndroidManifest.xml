@@ -30,11 +30,17 @@
             android:name=".UnitDetailActivity"
             android:label="Chi tiết đơn vị"/>
         <activity
+            android:name=".EditUnitActivity"
+            android:label="Chỉnh sửa đơn vị"/>
+        <activity
             android:name=".StaffDirectoryActivity"
             android:label="Danh bạ CBNV"/>
         <activity
             android:name=".StaffDetailActivity"
-            android:label="Chi tiết nhân viên"/>
+            android:label="Chi tiết CBNV"/>
+        <activity
+            android:name=".EditStaffActivity"
+            android:label="Chỉnh sửa CBNV"/>
     </application>
 
 </manifest>

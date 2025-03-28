@@ -11,6 +11,8 @@ import com.example.tlucontact.data.SampleData
 
 class StaffDirectoryActivity : AppCompatActivity() {
 
+    private lateinit var staffAdapter: StaffAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_staff_directory)
@@ -18,13 +20,13 @@ class StaffDirectoryActivity : AppCompatActivity() {
 
         val rvStaff = findViewById<RecyclerView>(R.id.rvStaff)
         rvStaff.layoutManager = LinearLayoutManager(this)
-        val staffAdapter = StaffAdapter(SampleData.staff)
+        staffAdapter = StaffAdapter(SampleData.staff)
         rvStaff.adapter = staffAdapter
 
         staffAdapter.setOnItemClickListener { staff ->
             val intent = Intent(this, StaffDetailActivity::class.java)
             intent.putExtra("staff", staff)
-            startActivity(intent)
+            startActivityForResult(intent, STAFF_DETAIL_REQUEST_CODE)
         }
     }
 
@@ -34,5 +36,16 @@ class StaffDirectoryActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == STAFF_DETAIL_REQUEST_CODE && resultCode == RESULT_OK) {
+            staffAdapter.notifyDataSetChanged() // Refresh the adapter
+        }
+    }
+
+    companion object {
+        private const val STAFF_DETAIL_REQUEST_CODE = 1
     }
 }
