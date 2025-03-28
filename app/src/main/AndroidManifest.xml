@@ -23,10 +23,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UnitDirectoryActivity" />
-        <activity android:name=".UnitDetailActivity" />
-        <activity android:name=".StaffDetailActivity" />
-        <activity android:name=".StaffDirectoryActivity" />
+        <activity
+            android:name=".UnitDirectoryActivity"
+            android:label="Danh bạ đơn vị"/>
+        <activity
+            android:name=".UnitDetailActivity"
+            android:label="Chi tiết đơn vị"/>
+        <activity
+            android:name=".StaffDirectoryActivity"
+            android:label="Danh bạ CBNV"/>
+        <activity
+            android:name=".StaffDetailActivity"
+            android:label="Chi tiết nhân viên"/>
     </application>
 
 </manifest>
