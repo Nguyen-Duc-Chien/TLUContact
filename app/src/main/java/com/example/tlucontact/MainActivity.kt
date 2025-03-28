@@ -11,7 +11,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val btnUnitDirectory = findViewById<Button>(R.id.btnUnitDirectory)
         val btnStaffDirectory = findViewById<Button>(R.id.btnStaffDirectory)
@@ -27,11 +26,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            finish() // Close this activity and go back to the previous one
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
 }

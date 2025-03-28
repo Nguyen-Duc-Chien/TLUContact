@@ -5,26 +5,92 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Avatar Image -->
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/avatar" />
+
+    <!-- Unit Name -->
     <TextView
         android:id="@+id/tvUnitDetailName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Unit Name"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:text="Name"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp" />
 
-    <TextView
-        android:id="@+id/tvUnitDetailPhoneNumber"
-        android:layout_width="wrap_content"
+    <!-- Horizontal LinearLayout for the buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Phone Number"
-        android:textSize="18sp" />
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="16dp">
 
-    <TextView
-        android:id="@+id/tvUnitDetailAddress"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnCall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Gọi" />
+
+        <Button
+            android:id="@+id/btnMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nhắn tin" />
+
+        <Button
+            android:id="@+id/btnOpenAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Địa chỉ" />
+    </LinearLayout>
+
+    <!-- Details -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Address"
-        android:textSize="18sp" />
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SĐT: "
+            android:textStyle="bold"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tvUnitDetailPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Địa chỉ: "
+            android:textStyle="bold"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tvUnitDetailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </LinearLayout>
