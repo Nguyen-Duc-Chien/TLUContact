@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tlucontact.R
 import com.example.tlucontact.data.Staff
 
-class StaffAdapter(private val staff: List<Staff>) :
+class StaffAdapter(private var staff: List<Staff>) :
     RecyclerView.Adapter<StaffAdapter.StaffViewHolder>() {
 
-    private var onItemClickListener: ((Staff) -> Unit)? = null
+    private var filteredStaff: List<Staff> = staff
 
     inner class StaffViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvStaffName: TextView = itemView.findViewById(R.id.tvStaffName)
@@ -19,7 +19,7 @@ class StaffAdapter(private val staff: List<Staff>) :
 
         init {
             itemView.setOnClickListener {
-                onItemClickListener?.invoke(staff[adapterPosition])
+                onItemClickListener?.invoke(filteredStaff[adapterPosition])
             }
         }
     }
@@ -30,14 +30,25 @@ class StaffAdapter(private val staff: List<Staff>) :
     }
 
     override fun onBindViewHolder(holder: StaffViewHolder, position: Int) {
-        val staffMember = staff[position]
+        val staffMember = filteredStaff[position]
         holder.tvStaffName.text = staffMember.name
         holder.tvStaffPhoneNumber.text = staffMember.phoneNumber
     }
 
     override fun getItemCount(): Int {
-        return staff.size
+        return filteredStaff.size
     }
+
+    fun filter(query: String) {
+        filteredStaff = if (query.isEmpty()) {
+            staff
+        } else {
+            staff.filter { it.name.contains(query, ignoreCase = true) }
+        }
+        notifyDataSetChanged()
+    }
+
+    private var onItemClickListener: ((Staff) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (Staff) -> Unit) {
         onItemClickListener = listener

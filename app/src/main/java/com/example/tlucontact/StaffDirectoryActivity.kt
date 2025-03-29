@@ -2,13 +2,16 @@ package com.example.tlucontact
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tlucontact.adapter.StaffAdapter
 import com.example.tlucontact.data.SampleData
-import android.widget.Button
 import com.example.tlucontact.data.Staff
 
 class StaffDirectoryActivity : AppCompatActivity() {
@@ -24,6 +27,17 @@ class StaffDirectoryActivity : AppCompatActivity() {
         rvStaff.layoutManager = LinearLayoutManager(this)
         staffAdapter = StaffAdapter(SampleData.staff)
         rvStaff.adapter = staffAdapter
+
+        val etSearch = findViewById<EditText>(R.id.etSearch)
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                staffAdapter.filter(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
         staffAdapter.setOnItemClickListener { staff ->
             val intent = Intent(this, StaffDetailActivity::class.java)

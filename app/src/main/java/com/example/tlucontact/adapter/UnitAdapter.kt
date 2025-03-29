@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tlucontact.R
 import com.example.tlucontact.data.OrgUnit // Đổi từ Unit -> OrgUnit
 
-class UnitAdapter(private val units: List<OrgUnit>) :
+class UnitAdapter(private var units: List<OrgUnit>) :
     RecyclerView.Adapter<UnitAdapter.UnitViewHolder>() {
 
-    private var onItemClickListener: ((OrgUnit) -> Unit)? = null
+    private var filteredUnits: List<OrgUnit> = units
 
     inner class UnitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvUnitName: TextView = itemView.findViewById(R.id.tvUnitName)
@@ -19,7 +19,7 @@ class UnitAdapter(private val units: List<OrgUnit>) :
 
         init {
             itemView.setOnClickListener {
-                onItemClickListener?.invoke(units[adapterPosition])
+                onItemClickListener?.invoke(filteredUnits[adapterPosition])
             }
         }
     }
@@ -30,14 +30,25 @@ class UnitAdapter(private val units: List<OrgUnit>) :
     }
 
     override fun onBindViewHolder(holder: UnitViewHolder, position: Int) {
-        val unit = units[position]
+        val unit = filteredUnits[position]
         holder.tvUnitName.text = unit.name
         holder.tvUnitPhoneNumber.text = unit.phoneNumber
     }
 
     override fun getItemCount(): Int {
-        return units.size
+        return filteredUnits.size
     }
+
+    fun filter(query: String) {
+        filteredUnits = if (query.isEmpty()) {
+            units
+        } else {
+            units.filter { it.name.contains(query, ignoreCase = true) }
+        }
+        notifyDataSetChanged()
+    }
+
+    private var onItemClickListener: ((OrgUnit) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (OrgUnit) -> Unit) {
         onItemClickListener = listener

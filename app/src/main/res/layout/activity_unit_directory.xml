@@ -3,10 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tìm kiếm" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvUnits"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/etSearch"
         android:layout_above="@id/btnAddUnit"/>
 
     <Button

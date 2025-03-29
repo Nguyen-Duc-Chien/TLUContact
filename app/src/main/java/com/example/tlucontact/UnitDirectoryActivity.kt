@@ -2,14 +2,17 @@ package com.example.tlucontact
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tlucontact.adapter.UnitAdapter
-import com.example.tlucontact.data.SampleData
-import android.widget.Button
 import com.example.tlucontact.data.OrgUnit
+import com.example.tlucontact.data.SampleData
 
 class UnitDirectoryActivity : AppCompatActivity() {
 
@@ -24,6 +27,17 @@ class UnitDirectoryActivity : AppCompatActivity() {
         rvUnits.layoutManager = LinearLayoutManager(this)
         unitAdapter = UnitAdapter(SampleData.units)
         rvUnits.adapter = unitAdapter
+
+        val etSearch = findViewById<EditText>(R.id.etSearch)
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                unitAdapter.filter(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
 
         unitAdapter.setOnItemClickListener { unit ->
             val intent = Intent(this, UnitDetailActivity::class.java)
