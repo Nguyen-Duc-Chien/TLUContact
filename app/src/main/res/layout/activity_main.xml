@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="40dp"/>
 
     <Button
         android:id="@+id/btnUnitDirectory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="Danh bạ đơn vị" />
+        android:text="Danh bạ đơn vị"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btnStaffDirectory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnUnitDirectory"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Danh bạ CBNV" />
+        android:text="Danh bạ CBNV"/>
 
-</RelativeLayout>
+</LinearLayout>
