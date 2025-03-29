@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tlucontact.adapter.StaffAdapter
 import com.example.tlucontact.data.SampleData
+import android.widget.Button
+import com.example.tlucontact.data.Staff
 
 class StaffDirectoryActivity : AppCompatActivity() {
 
@@ -28,6 +30,12 @@ class StaffDirectoryActivity : AppCompatActivity() {
             intent.putExtra("staff", staff)
             startActivityForResult(intent, STAFF_DETAIL_REQUEST_CODE)
         }
+
+        val btnAddStaff = findViewById<Button>(R.id.btnAddStaff)
+        btnAddStaff.setOnClickListener {
+            val intent = Intent(this, EditStaffActivity::class.java)
+            startActivityForResult(intent, ADD_STAFF_REQUEST_CODE)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -42,10 +50,17 @@ class StaffDirectoryActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == STAFF_DETAIL_REQUEST_CODE && resultCode == RESULT_OK) {
             staffAdapter.notifyDataSetChanged() // Refresh the adapter
+        } else if (requestCode == ADD_STAFF_REQUEST_CODE && resultCode == RESULT_OK) {
+            val newStaff = data?.getParcelableExtra<Staff>("newStaff")
+            if (newStaff != null) {
+                SampleData.addStaff(newStaff)
+                staffAdapter.notifyDataSetChanged() // Refresh the adapter
+            }
         }
     }
 
     companion object {
         private const val STAFF_DETAIL_REQUEST_CODE = 1
+        private const val ADD_STAFF_REQUEST_CODE = 2
     }
 }

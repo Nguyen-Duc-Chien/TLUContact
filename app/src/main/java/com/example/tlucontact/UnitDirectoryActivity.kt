@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tlucontact.adapter.UnitAdapter
 import com.example.tlucontact.data.SampleData
+import android.widget.Button
+import com.example.tlucontact.data.OrgUnit
 
 class UnitDirectoryActivity : AppCompatActivity() {
 
@@ -28,6 +30,12 @@ class UnitDirectoryActivity : AppCompatActivity() {
             intent.putExtra("unit", unit)
             startActivityForResult(intent, UNIT_DETAIL_REQUEST_CODE)
         }
+
+        val btnAddUnit = findViewById<Button>(R.id.btnAddUnit)
+        btnAddUnit.setOnClickListener {
+            val intent = Intent(this, EditUnitActivity::class.java)
+            startActivityForResult(intent, ADD_UNIT_REQUEST_CODE)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -42,10 +50,17 @@ class UnitDirectoryActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == UNIT_DETAIL_REQUEST_CODE && resultCode == RESULT_OK) {
             unitAdapter.notifyDataSetChanged() // Refresh the adapter
+        } else if (requestCode == ADD_UNIT_REQUEST_CODE && resultCode == RESULT_OK) {
+            val newUnit = data?.getParcelableExtra<OrgUnit>("newUnit")
+            if (newUnit != null) {
+                SampleData.addUnit(newUnit)
+                unitAdapter.notifyDataSetChanged() // Refresh the adapter
+            }
         }
     }
 
     companion object {
         private const val UNIT_DETAIL_REQUEST_CODE = 1
+        private const val ADD_UNIT_REQUEST_CODE = 2
     }
 }

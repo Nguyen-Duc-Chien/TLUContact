@@ -33,14 +33,14 @@ class EditUnitActivity : AppCompatActivity() {
         etUnitAddress.setText(unit?.address)
 
         btnSave.setOnClickListener {
-            val updatedUnit = OrgUnit(
+            val newUnit = OrgUnit(
                 unit?.id ?: 0,
                 etUnitName.text.toString(),
                 etUnitPhoneNumber.text.toString(),
                 etUnitAddress.text.toString()
             )
             val resultIntent = Intent()
-            resultIntent.putExtra("updatedUnit", updatedUnit)
+            resultIntent.putExtra("newUnit", newUnit)
             setResult(Activity.RESULT_OK, resultIntent)
             finish()
         }

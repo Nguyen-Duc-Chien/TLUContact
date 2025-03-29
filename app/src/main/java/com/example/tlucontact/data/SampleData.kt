@@ -13,6 +13,14 @@ object SampleData {
     )
     val staff: List<Staff> get() = _staff
 
+    fun addUnit(newUnit: OrgUnit) {
+        _units.add(newUnit)
+    }
+
+    fun addStaff(newStaff: Staff) {
+        _staff.add(newStaff)
+    }
+
     fun updateUnit(updatedUnit: OrgUnit) {
         val index = _units.indexOfFirst { it.id == updatedUnit.id }
         if (index != -1) {

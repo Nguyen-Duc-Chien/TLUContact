@@ -39,7 +39,7 @@ class EditStaffActivity : AppCompatActivity() {
         etStaffDepartment.setText(staff?.department)
 
         btnSave.setOnClickListener {
-            val updatedStaff = Staff(
+            val newStaff = Staff(
                 staff?.id ?: 0,
                 etStaffName.text.toString(),
                 etStaffPosition.text.toString(),
@@ -48,7 +48,7 @@ class EditStaffActivity : AppCompatActivity() {
                 etStaffDepartment.text.toString()
             )
             val resultIntent = Intent()
-            resultIntent.putExtra("updatedStaff", updatedStaff)
+            resultIntent.putExtra("newStaff", newStaff)
             setResult(Activity.RESULT_OK, resultIntent)
             finish()
         }
