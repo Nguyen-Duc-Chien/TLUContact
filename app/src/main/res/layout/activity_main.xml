@@ -26,6 +26,12 @@
         android:id="@+id/btnStaffDirectory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Danh bạ CBNV"/>
+        android:text="Danh bạ CBNV"
+        android:layout_marginBottom="16dp"/>
 
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng xuất" />
 </LinearLayout>

@@ -13,34 +13,46 @@
         android:theme="@style/Theme.TLUContact"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.TLUContact">
+            android:name=".LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".RegisterActivity"
+            android:label="Đăng kí"
+            android:exported="true"/>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.TLUContact" />
+        <activity
             android:name=".UnitDirectoryActivity"
-            android:label="Danh bạ đơn vị"/>
+            android:label="Danh bạ đơn vị"
+            android:exported="true"/>
         <activity
             android:name=".UnitDetailActivity"
-            android:label="Chi tiết đơn vị"/>
+            android:label="Chi tiết đơn vị"
+            android:exported="true"/>
         <activity
             android:name=".EditUnitActivity"
-            android:label=""/>
+            android:label=""
+            android:exported="true"/>
         <activity
             android:name=".StaffDirectoryActivity"
-            android:label="Danh bạ CBNV"/>
+            android:label="Danh bạ CBNV"
+            android:exported="true"/>
         <activity
             android:name=".StaffDetailActivity"
-            android:label="Chi tiết CBNV"/>
+            android:label="Chi tiết CBNV"
+            android:exported="true"/>
         <activity
             android:name=".EditStaffActivity"
-            android:label=""/>
+            android:label=""
+            android:exported="true"/>
     </application>
 
 </manifest>

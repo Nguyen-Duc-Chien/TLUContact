@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         val ivLogo = findViewById<ImageView>(R.id.ivLogo)
         val btnUnitDirectory = findViewById<Button>(R.id.btnUnitDirectory)
         val btnStaffDirectory = findViewById<Button>(R.id.btnStaffDirectory)
+        val logoutButton: Button = findViewById(R.id.btnLogOut)
+
 
         btnUnitDirectory.setOnClickListener {
             val intent = Intent(this, UnitDirectoryActivity::class.java)
@@ -25,6 +27,13 @@ class MainActivity : AppCompatActivity() {
         btnStaffDirectory.setOnClickListener {
             val intent = Intent(this, StaffDirectoryActivity::class.java)
             startActivity(intent)
+        }
+
+        logoutButton.setOnClickListener {
+            // Navigate back to LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish() // Close the MainActivity
         }
     }
 
