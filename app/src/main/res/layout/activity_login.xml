@@ -28,7 +28,7 @@
         android:minHeight="48dp" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/signInButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Đăng nhập" />

@@ -2,10 +2,8 @@ package com.example.tlucontact
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
-import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val ivLogo = findViewById<ImageView>(R.id.ivLogo)
         val btnUnitDirectory = findViewById<Button>(R.id.btnUnitDirectory)
         val btnStaffDirectory = findViewById<Button>(R.id.btnStaffDirectory)
         val logoutButton: Button = findViewById(R.id.btnLogOut)
